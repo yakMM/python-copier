@@ -21,7 +21,7 @@ def nox_lint(session: Session) -> None:
 @nox.session(python=False, name="lint_check")
 def nox_lint_check(session: Session) -> None:
     session.run("ruff", *TO_CHECK)
-    session.run("black", "--check", *TO_CHECK)
+    session.run("ruff", "format", "--check", *TO_CHECK)
 
 
 @nox.session(python=False, name="slots")
