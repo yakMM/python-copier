@@ -1,0 +1,28 @@
+---
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  tests:
+    name: Run nox
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pdm-project/setup-pdm@v3
+        with:
+          python-version: 3.12
+      - name: Install dependencies
+        run: |
+          python -VV
+          python -m site
+          pdm install          
+
+      - name: Run nox
+        run: pdm run nox -s lint_check slots mypy cov

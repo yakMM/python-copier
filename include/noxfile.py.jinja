@@ -1,0 +1,68 @@
+from pathlib import Path
+
+import nox
+from nox import Session
+
+CURRENT_FILE_PATH = Path(__file__).resolve()
+PACKAGE = "{{ project_name }}"
+TESTS = "tests"
+TO_CHECK = (PACKAGE, str(CURRENT_FILE_PATH), TESTS)
+
+nox.options.sessions = ("lint", "slots", "mypy", "cov")
+
+
+@nox.session(python=False, name="lint")
+def nox_lint(session: Session) -> None:
+    session.run("sort-all", PACKAGE)
+    session.run("ruff", "format", *TO_CHECK)
+    session.run("ruff", "check", "--fix", *TO_CHECK)
+
+
+@nox.session(python=False, name="lint_check")
+def nox_lint_check(session: Session) -> None:
+    session.run("ruff", *TO_CHECK)
+    session.run("black", "--check", *TO_CHECK)
+
+
+@nox.session(python=False, name="slots")
+def nox_slots(session: Session) -> None:
+    session.run("slotscheck", "-m", PACKAGE)
+
+
+@nox.session(python=False, name="mypy")
+def nox_mypy(session: Session) -> None:
+    mypy_flags = ("--show-traceback", "--extra-checks")
+    session.run("mypy", *TO_CHECK, *mypy_flags)
+
+
+@nox.session(python=False, name="test")
+def nox_test_dev(session: Session) -> None:
+    # -x => we stop on first fail
+    session.run("pytest", TESTS, "-x", *session.posargs)
+
+
+@nox.session(python=False, name="cov_dev")
+def nox_cov_dev(session: Session) -> None:
+    session.run(
+        "coverage",
+        "run",
+        f"--source={PACKAGE}",
+        "-m", "pytest",
+        TESTS,
+        "-x",
+        *session.posargs
+    )
+    session.run("coverage", "html")
+    session.run("coverage", "report")
+
+
+@nox.session(python=False, name="test_all")
+def nox_test_all(session: Session) -> None:
+    session.run("pytest", TESTS)
+
+
+@nox.session(python=False, name="cov")
+def nox_coverage(session: Session) -> None:
+    session.run("coverage", "run", f"--source={PACKAGE}", "-m", "pytest", TESTS)
+    session.run("coverage", "html")
+    session.run("coverage", "report")
