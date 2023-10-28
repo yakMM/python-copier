@@ -47,10 +47,11 @@ def nox_cov_dev(session: Session) -> None:
         "coverage",
         "run",
         f"--source={PACKAGE}",
-        "-m", "pytest",
+        "-m",
+        "pytest",
         TESTS,
         "-x",
-        *session.posargs
+        *session.posargs,
     )
     session.run("coverage", "html")
     session.run("coverage", "report")
