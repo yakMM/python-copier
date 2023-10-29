@@ -2,4 +2,4 @@ import {{ project_name }}
 
 
 def test_import() -> None:
-    dir({{ project_name }})
+    assert {{ project_name }}.__name__ == "{{ project_name }}"

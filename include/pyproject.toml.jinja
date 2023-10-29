@@ -40,7 +40,7 @@ m = "nox -s mypy"
 t = "nox -s test -- {args}"
 d = "nox -s docs"
 n = "nox {args}"
-qn = "nox -s format ruff slots mypy"
+qn = "nox -s lint ruff slots mypy"
 
 [tool.coverage.report]
 exclude_lines = ["if t.TYPE_CHECKING:", "@t.overload", "@abstractmethod"]
@@ -71,7 +71,6 @@ target-version = "py{{ python_version.replace('.', '') }}"
 [tool.ruff.per-file-ignores]
 "test.py" = ["ERA001"]
 "tests/*" = ["ARG", "PLR0913", "PLC1901"]
-
 
 [tool.ruff.flake8-tidy-imports]
 ban-relative-imports = "parents"
