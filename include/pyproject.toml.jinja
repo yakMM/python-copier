@@ -13,7 +13,6 @@ license = {text = "MIT"}
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
-
 [tool.pdm.dev-dependencies]
 nox = [
     "nox==2023.4.22",
@@ -32,7 +31,6 @@ test = [
     "coverage==7.3.2",
 ]
 
-
 [tool.pdm.scripts]
 l = "nox -s lint"
 m = "nox -s mypy"
@@ -44,7 +42,6 @@ cup = {cmd = "copier update -A --vcs-ref=HEAD"}
 
 [tool.coverage.report]
 exclude_lines = ["if t.TYPE_CHECKING:", "@t.overload", "@abstractmethod"]
-
 
 [tool.ruff]
 line-length = {{ max_line_length }}
