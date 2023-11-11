@@ -74,7 +74,7 @@ preview = true
 
 [tool.ruff.per-file-ignores]
 "test.py" = ["ERA001"]
-"tests/*" = ["ARG", "PLR0913", "PLC1901"]
+"tests/*" = ["ARG", "PLR0913", "PLC1901", "PLR6301"]
 
 [tool.ruff.flake8-tidy-imports]
 ban-relative-imports = "parents"
@@ -137,5 +137,5 @@ enable_error_code = [
     "truthy-iterable",
     "ignore-without-code",
     "unused-awaitable",
-    "explicit-override"
+#    "explicit-override"  # Bugged in mypy 1.7.0 (https://github.com/python/mypy/issues/16452)
 ]
