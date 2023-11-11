@@ -120,7 +120,9 @@ warn_no_return = true
 warn_return_any = true
 warn_unreachable = true
 
-# Strictness
+# Miscellaneous
+allow_untyped_globals = false
+allow_redefinition = false
 strict_equality = true
 
 # Configuring error messages
@@ -137,5 +139,7 @@ enable_error_code = [
     "truthy-iterable",
     "ignore-without-code",
     "unused-awaitable",
-#    "explicit-override"  # Bugged in mypy 1.7.0 (https://github.com/python/mypy/issues/16452)
+    "unused-ignore",
+#    "explicit-override"  # Bugged in mypy 1.7.0 (https://github.com/python/mypy/issues/16452),
+    "unimported-reveal",
 ]
