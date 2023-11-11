@@ -40,9 +40,7 @@ t = "nox -s test -- {args}"
 d = "nox -s docs"
 n = "nox {args}"
 qn = "nox -s lint slots mypy"
-_copier_update = {cmd = "copier update -A --vcs-ref=HEAD"}
-_pdm_install = {cmd = "pdm install"}
-up = {composite = ["_copier_update", "_pdm_install"]}
+cup = {cmd = "copier update -A --vcs-ref=HEAD"}
 
 [tool.coverage.report]
 exclude_lines = ["if t.TYPE_CHECKING:", "@t.overload", "@abstractmethod"]
