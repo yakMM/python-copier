@@ -25,7 +25,7 @@ lint = [
     "sort-all @ git+https://github.com/yakMM/sort-all",
 ]
 types = [
-    "mypy==1.6.1",
+    "mypy==1.7.0",
 ]
 test = [
     "pytest==7.4.3",
@@ -55,6 +55,7 @@ line-length = {{ max_line_length }}
 select = ["ALL"]
 ignore = [
     "COM",      # Commas
+    "CPY",      # Copyright
     "EM",       # Err-msg
     "INP",      # No-pep420
     "TCH",      # Type-checking, don't want to nest imports under TYPE_CHECKING
@@ -69,6 +70,9 @@ ignore = [
     "TRY003",   # Long messages in exception class
 ]
 target-version = "py{{ python_version.replace('.', '') }}"
+
+[tool.ruff.lint]
+preview = true
 
 [tool.ruff.per-file-ignores]
 "test.py" = ["ERA001"]
