@@ -15,20 +15,20 @@ build-backend = "pdm.backend"
 
 [tool.pdm.dev-dependencies]
 nox = [
-    "nox==2023.4.22",
+    "nox==2024.3.2",
 ]
 lint = [
-    "slotscheck==0.17.1",
-    "ruff==0.1.9",
+    "slotscheck==0.19.0",
+    "ruff==0.3.4",
     # Custom sort-all fork
     "sort-all @ git+https://github.com/yakMM/sort-all",
 ]
 types = [
-    "mypy==1.8.0",
+    "mypy==1.9.0",
 ]
 test = [
-    "pytest==7.4.3",
-    "coverage==7.4.0",
+    "pytest==8.1.1",
+    "coverage==7.4.4",
 ]
 
 [tool.pdm.scripts]
@@ -45,7 +45,9 @@ exclude_lines = ["if t.TYPE_CHECKING:", "@t.overload", "@abstractmethod"]
 
 [tool.ruff]
 line-length = {{ max_line_length }}
+target-version = "py{{ python_version.replace('.', '') }}"
 
+[tool.ruff.lint]
 # We select all rules then ignore the one we don't want
 select = ["ALL"]
 ignore = [
@@ -64,22 +66,19 @@ ignore = [
     "D1",       # Missing docstring
     "TRY003",   # Long messages in exception class
 ]
-target-version = "py{{ python_version.replace('.', '') }}"
-
-[tool.ruff.lint]
 preview = true
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "test.py" = ["ERA001"]
-"tests/*" = ["ARG", "PLR0913", "PLC1901", "PLR6301"]
+"tests/*" = ["ARG", "PLR0913", "PLC1901", "PLR6301", "PLC2701"]
 
-[tool.ruff.flake8-tidy-imports]
+[tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "parents"
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "pep257"
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 force-single-line = true
 
 [tool.ruff.format]
@@ -107,9 +106,6 @@ disallow_incomplete_defs = true
 check_untyped_defs = true
 disallow_untyped_decorators = true
 
-# Optional handling
-strict_optional = true
-
 # Warnings
 warn_redundant_casts = true
 warn_unused_ignores = true
@@ -120,6 +116,7 @@ warn_unreachable = true
 # Miscellaneous
 allow_untyped_globals = false
 allow_redefinition = false
+local_partial_types = true
 strict_equality = true
 
 # Configuring error messages
