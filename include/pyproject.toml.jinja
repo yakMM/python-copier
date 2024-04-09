@@ -19,7 +19,7 @@ nox = [
 ]
 lint = [
     "slotscheck==0.19.0",
-    "ruff==0.3.4",
+    "ruff==0.3.5",
     # Custom sort-all fork
     "sort-all @ git+https://github.com/yakMM/sort-all",
 ]
@@ -53,7 +53,6 @@ select = ["ALL"]
 ignore = [
     "COM",      # Commas
     "CPY",      # Copyright
-    "EM",       # Err-msg
     "INP",      # No-pep420
     "TCH",      # Type-checking, don't want to nest imports under TYPE_CHECKING
     "SLF",      # Self
@@ -64,7 +63,6 @@ ignore = [
     "ANN101",   # missing-type-self
     "ANN102",   # missing-type-cls
     "D1",       # Missing docstring
-    "TRY003",   # Long messages in exception class
 ]
 preview = true
 
