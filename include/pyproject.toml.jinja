@@ -53,7 +53,6 @@ select = ["ALL"]
 ignore = [
     "COM",      # Commas
     "CPY",      # Copyright
-    "INP",      # No-pep420
     "TCH",      # Type-checking, don't want to nest imports under TYPE_CHECKING
     "SLF",      # Self
     "TD",       # Todos
@@ -68,7 +67,9 @@ preview = true
 
 [tool.ruff.lint.per-file-ignores]
 "test.py" = ["ERA001"]
-"tests/*" = ["ARG", "PLR0913", "PLC1901", "PLR6301", "PLC2701"]
+"tests/*" = ["ARG", "PLR0913", "PLC1901", "PLR6301", "PLC2701", "INP"]
+"docs/*" = ["INP"]
+"migrations/*" = ["INP"]
 
 [tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "parents"
