@@ -10,12 +10,24 @@ project_description:
   type: str
   help: Your project description
 
+project_year:
+  type: str
+  help: Project's creation year
+
+author_name:
+  type: str
+  help: Author name for the project
+
+author_email:
+  type: str
+  help: Author email for the project
+
 python_version:
   type: str
   help: The python version your project supports
-  default: "3.11"
+  default: "3.12"
 
 max_line_length:
   type: int
   help: Max line length for formatting
-  default: "88"
+  default: "110"
