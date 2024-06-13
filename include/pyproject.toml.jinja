@@ -3,7 +3,7 @@ name = "{{ project_name }}"
 version = "0.1"
 description = "{{ project_description }}"
 authors = [
-    {name = "YakMM", email = "yak.mayam@gmail.com"},
+    {name = "{{ author_name }}", email = ""{{ author_email }}""},
 ]
 requires-python = "=={{ python_version }}.*"
 readme = "README.md"
@@ -19,7 +19,7 @@ nox = [
 ]
 lint = [
     "slotscheck==0.19.0",
-    "ruff==0.4.2",
+    "ruff==0.4.8",
     # Custom sort-all fork
     "sort-all @ git+https://github.com/yakMM/sort-all",
 ]
@@ -27,8 +27,8 @@ types = [
     "mypy==1.10.0",
 ]
 test = [
-    "pytest==8.1.2",
-    "coverage==7.5.0",
+    "pytest==8.2.2",
+    "coverage==7.5.3",
 ]
 
 [tool.pdm.scripts]
