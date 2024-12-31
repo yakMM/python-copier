@@ -13,7 +13,6 @@ nox.options.sessions = ("lint", "slots", "mypy", "cov")
 
 @nox.session(python=False, name="lint")
 def nox_lint(session: Session) -> None:
-    session.run("sort-all", PACKAGE)
     session.run("ruff", "format", *TO_CHECK)
     session.run("ruff", "check", "--fix", *TO_CHECK)
 
