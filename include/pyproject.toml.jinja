@@ -13,13 +13,10 @@ license = {text = "MIT"}
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
-[tool.pdm.dev-dependencies]
-nox = [
-    "nox==2024.10.9",
-]
+[dependency-groups]
 lint = [
     "slotscheck==0.19.1",
-    "ruff==0.8.4",
+    "ruff==0.8.5",
 ]
 types = [
     "mypy==1.14.1",
@@ -28,15 +25,12 @@ test = [
     "pytest==8.3.4",
     "coverage==7.6.10",
 ]
-
-[tool.pdm.scripts]
-l = "nox -s lint"
-m = "nox -s mypy"
-t = "nox -s test -- {args}"
-d = "nox -s docs"
-n = "nox {args}"
-qn = "nox -s lint slots mypy"
-cup = {cmd = "copier update -A --vcs-ref=HEAD"}
+dev = [
+    "nox==2024.10.9",
+    {include-group = "lint"},
+    {include-group = "types"},
+    {include-group = "test"},
+]
 
 [tool.coverage.report]
 exclude_lines = ["if t.TYPE_CHECKING:", "@t.overload", "@abstractmethod"]

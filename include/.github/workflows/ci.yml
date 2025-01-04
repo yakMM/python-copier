@@ -14,15 +14,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: pdm-project/setup-pdm@v3
-        with:
-          python-version: {{ python_version }}
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5.1.0
       - name: Install dependencies
-        run: |
-          python -VV
-          python -m site
-          pdm install          
-
+        run: uv sync
       - name: Run nox
         run: pdm run nox -s lint_check slots mypy cov
