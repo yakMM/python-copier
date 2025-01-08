@@ -15,15 +15,15 @@ build-backend = "pdm.backend"
 
 [dependency-groups]
 lint = [
-    "slotscheck==0.19.1",
-    "ruff==0.8.5",
+    "slotscheck=={{ slotscheck_version }}",
+    "ruff=={{ ruff_version }}",
 ]
 types = [
-    "mypy==1.14.1",
+    "mypy=={{ mypy_version }}",
 ]
 test = [
-    "pytest==8.3.4",
-    "coverage==7.6.10",
+    "pytest=={{ pytest_version }}",
+    "coverage=={{ coverage_version }}",
 ]
 dev = [
     "nox==2024.10.9",

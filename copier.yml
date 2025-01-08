@@ -27,6 +27,26 @@ python_version:
   help: The python version your project supports
   default: "3.12"
 
+slotscheck_version:
+  type: str
+  help: The version of slotscheck to use
+
+ruff_version:
+  type: str
+  help: The version of ruff to use
+
+mypy_version:
+  type: str
+  help: The version of mypy to use
+
+pytest_version:
+  type: str
+  help: The version of pytest to use
+
+coverage_version:
+  type: str
+  help: The version of coverage to use
+
 max_line_length:
   type: int
   help: Max line length for formatting
