@@ -37,7 +37,6 @@ exclude_lines = ["if t.TYPE_CHECKING:", "@t.overload", "@abstractmethod"]
 
 [tool.ruff]
 line-length = {{ max_line_length }}
-target-version = "py{{ python_version.replace('.', '') }}"
 
 [tool.ruff.lint]
 # We select all rules then ignore the one we don't want
@@ -72,8 +71,6 @@ convention = "pep257"
 force-single-line = true
 
 [tool.ruff.format]
-skip-magic-trailing-comma = true
-docstring-code-format = true
 preview = true
 
 [tool.slotscheck]
