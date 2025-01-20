@@ -25,7 +25,11 @@ author_email:
 python_version:
   type: str
   help: The python version your project supports
-  default: "3.12"
+  default: "3.13"
+
+nox_version:
+  type: str
+  help: The version of nox to use
 
 slotscheck_version:
   type: str
@@ -50,4 +54,4 @@ coverage_version:
 max_line_length:
   type: int
   help: Max line length for formatting
-  default: "110"
+  default: 110
