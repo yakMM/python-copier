@@ -19,4 +19,4 @@ jobs:
       - name: Install dependencies
         run: uv sync
       - name: Run nox
-        run: pdm run nox -s lint_check slots mypy cov
+        run: uv run nox -s lint_check slots mypy cov
